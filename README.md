@@ -11,6 +11,7 @@ FastFoodDiet is a website where you can easily find a meal that will fit your ca
 * As a user, I want to see all the combinations of items in restaurant that can fit my nutrition needs
 * As as user, I want to see a range of macros that fits closest to my nutritional needs
 * As a user, I want to be able to create a combination of items
+* As a user, I want to be able to sign in with Google, and create an account
 
 
 
