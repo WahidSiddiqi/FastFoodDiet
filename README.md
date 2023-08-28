@@ -54,5 +54,7 @@ FastFoodDiet is a website where you can easily find a meal that will fit your ca
 * Mongoose
 * Node.js
 * Express
-
+* EJS
+* OAuth
+* Javascript
 
