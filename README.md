@@ -30,3 +30,19 @@ A sign in page
 
 A logged in home page
 A restaurant page
+
+![ERD](https://github.com/WahidSiddiqi/FastFoodDiet/assets/12146715/0c5f192f-fd48-4ce0-beb3-a38ce05b2a9d)
+
+
+![WelcomePage](https://github.com/WahidSiddiqi/FastFoodDiet/assets/12146715/16a0460d-fd2d-48ed-aecb-d3534092c47d)
+
+
+![CreateNewAccount](https://github.com/WahidSiddiqi/FastFoodDiet/assets/12146715/af537de3-ccb4-47a8-a572-8b79a671db5e)
+
+
+![SignedInHomePage](https://github.com/WahidSiddiqi/FastFoodDiet/assets/12146715/8ebc0809-92d5-418e-9ffb-aff32868c608)
+
+
+![RestaurantPage](https://github.com/WahidSiddiqi/FastFoodDiet/assets/12146715/eabd2412-cbd3-4ba3-9ea5-1efd19a8a7d7)
+
+
