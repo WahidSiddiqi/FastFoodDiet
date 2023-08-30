@@ -1,5 +1,36 @@
 <%- include('./partials/header') %>
-
+  <table>
+    <theader>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Type
+        </th>
+        <th>
+          Price
+        </th>
+      </tr>
+    </theader>
+    <tbody>
+      <% restaurants.forEach((r)=> { %>
+        <tr>
+          <td>
+            <a href="/restaurants/<%=r.name%>">
+              <%= r.name %>
+            </a>
+          </td>
+          <td>
+            <%= r.foodType %>
+          </td>
+          <td>
+            <%= r.price %>
+          </td>
+        </tr>
+        <%})%>
+    </tbody>
+  </table>
 
 
   <%- include('./partials/footer') %>
