@@ -1,5 +1,46 @@
 <%- include('../partials/header') %>
     <h2>
         <%= restaurant.name %>
+
+            <form action="/restaurants/<%=restaurant.name%>/delete" method="POST">
+                <input type="submit" class="delete-link" value="Delete">
+            </form>
     </h2>
+
+
+
+    <form id="new-form" action="/restaurants/<%=restaurant.name%>/items" method="POST">
+        <label>Item Name:</label>
+        <input type="text" name="item">
+        <label>Calories:</label>
+        <input type="text" name="calories">
+        <input type="submit" value="Add Item">
+    </form>
+
+    <table>
+        <theader>
+            <tr>
+                <th>item</th>
+                <th>calories</th>
+                <th>actions</th>
+            </tr>
+        </theader>
+        <tbody>
+            <% items.forEach((i)=> { %>
+                <tr>
+                    <td>
+                        <%= i.item%>
+                    </td>
+                    <td>
+                        <%= i.calories%>
+                    </td>
+                    <td>
+                        <a href="/restaurants/<%= restaurant.name %>/item/<%= i._id %>/edit">Edit</a>
+                        &nbsp;
+                        <a href="/restaurants/<%= restaurant.name %>/item/<%= i._id %>/delete">Delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
     <%- include('../partials/footer') %>

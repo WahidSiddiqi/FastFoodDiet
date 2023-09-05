@@ -1,4 +1,5 @@
 const Restaurant = require('../models/restaurant');
+const Item = require('../models/item')
 
 async function create(req, res) {
     // convert nowShowing's checkbox of nothing or "on" to boolean
@@ -22,7 +23,6 @@ async function create(req, res) {
 async function index(req, res) {
     const loggedIn = req.user !== undefined;
     const restaurants = await Restaurant.find({})
-    console.log(restaurants)
     res.render('restaurants', { title: 'Restaurants', loggedIn, restaurants });
 }
 
@@ -33,17 +33,85 @@ async function newRestaurant(req, res) {
     res.render('restaurants/new', { title: 'Restaurants', loggedIn });
 }
 
+async function deleteRestaurant(req, res) {
+    const restaurantName = req.params.name;
+    // TODO: delete all items that restaurants owns
+
+    // delete restaurants
+    const deletedRestaurant = await Restaurant.findOneAndDelete({
+        name: restaurantName
+    })
+    console.log({ deletedRestaurant })
+    res.redirect('/restaurants')
+}
+
+
 async function show(req, res) {
     const name = req.params.name
     const restaurant = await Restaurant.findOne({ name })
-    console.log(restaurant, name);
-    res.render('restaurants/show', { title: 'Restaurant', restaurant: restaurant })
+
+    const items = await Item.find({ _id: { $in: restaurant.items } }).sort('name');
+    res.render('restaurants/show', { title: 'Restaurant', restaurant, items })
 }
+
+async function showEditItem(req, res) {
+    const restaurantName = req.params.name;
+    const item = await Item.findById(req.params.id);
+    console.log({ id: req.params.id, item })
+    res.render('restaurants/editItem', {
+        title: `Edit ${item.name}`,
+        item,
+        restaurant: {
+            name: restaurantName
+        }
+    })
+}
+
+async function postEditItem(req, res) {
+    const itemId = req.params.id
+    const restaurantName = req.params.name;
+    const item = req.body.item;
+    const calories = req.body.calories;
+    const updatedItem = await Item.findByIdAndUpdate(itemId, { item, calories });
+    console.log({ item, calories, updatedItem, restaurantName });
+
+    // after successfully update the item, redirect back to restaurant page
+    res.redirect(`/restaurants/${restaurantName}`)
+}
+
+async function showDeleteItem(req, res) {
+    const restaurantName = req.params.name;
+    const item = await Item.findById(req.params.id);
+    console.log({ id: req.params.id, item })
+    res.render('restaurants/deleteItem', {
+        title: `Delete ${item.name}`,
+        item,
+        restaurant: {
+            name: restaurantName
+        }
+    })
+}
+
+async function postDeleteItem(req, res) {
+    const itemId = req.params.id
+    const restaurantName = req.params.name;
+    const deletedItem = await Item.findByIdAndDelete(itemId);
+    console.log({ deletedItem, restaurantName });
+
+    // after successfully deleting the item, redirect back to restaurant page
+    res.redirect(`/restaurants/${restaurantName}`)
+}
+
 
 module.exports = {
     index,
+    showEditItem,
+    postEditItem,
+    showDeleteItem,
+    postDeleteItem,
     show,
     new: newRestaurant,
-    create
+    create,
+    delete: deleteRestaurant
 };
 

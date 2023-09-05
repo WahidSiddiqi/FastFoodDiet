@@ -16,7 +16,8 @@ body {
 
 body>nav {
   grid-area: nav;
-  background-color: #B8C0C2;
+  background-color: #91a7d3;
+  color: white;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -188,4 +189,12 @@ hr {
 .review-user img {
   border-radius: 50%;
   height: 40px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.delete-link {
+  color: red;
 }

@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+    <form id="new-form" action="/restaurants/<%= restaurant.name %>/item/<%=item._id%>/edit" method="POST">
+        <label>Item Name:</label>
+        <input value="<%= item.item %>" type="text" name="item">
+        <label>Calories:</label>
+        <input value="<%= item.calories %>" type="text" name="calories">
+        <input type="submit" value="Add Item">
+    </form>
+    <%- include('../partials/footer') %>

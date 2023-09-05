@@ -14,7 +14,7 @@ require('./config/passport.js');
 
 const indexRouter = require('./routes/index');
 const restaurantsRouter = require('./routes/restaurants.js');
-
+const itemsRouter = require('./routes/items')
 
 
 var app = express();
@@ -47,6 +47,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/restaurants', restaurantsRouter);
+app.use('/', itemsRouter);
 // Mount these routers to root because not all 
 // paths for a related/nested resource begin the same
 

@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+    <form action="/restaurants/<%= restaurant.name %>/item/<%=item._id%>/delete" method="POST">
+        <div class="text-center">Are you sure you want to delete <%= item.item%>?</div>
+        <div class="text-center">
+            <button type="submit">Delete</button>
+        </div>
+    </form>
+    <%- include('../partials/footer') %>

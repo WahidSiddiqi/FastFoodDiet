@@ -14,7 +14,11 @@ const restaurantSchema = new Schema({
   price: {
     type: String,
     required: true
-  }
+  },
+  items: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Item'
+  }],
 }, {
   timestamps: true
 });
